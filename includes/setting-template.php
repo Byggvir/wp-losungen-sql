@@ -17,18 +17,11 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 <!-- HHL Losungen Settings -->
 
-  <h1>Herrnhuter Losungen</h1>
+  <h1>Herrnhuter Losungen (HHL)</h1>
   <h2>Beschreibung</h2>
   <p>
   Hier k&ouml;nnen die vorgegebenen Werte des Herrnhuter Plugins angepasst / &uuml;berschrieben werden. 
   </p>
-  
-  <h3>Liste der Parameter des Shortcodes</h3>
-
-  <p>Folgender Parameter wird unterstützt: Datum, Losungsvers, Lehrtextvers
-  </p>
-  
-  <h2>Vorgabewerte<h2>
   
   <form method="post" action="options.php"> 
     <?php @settings_fields('hhl-group'); ?>
@@ -36,3 +29,15 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
     <?php do_settings_sections('hhl_losungen'); ?>
     <?php @submit_button(); ?>
   </form>
+  
+  <h2>Parameter des Shortcodes [losungen]</h2>
+
+  <p>Folgende Parameter werden unterstützt:
+	<ol>
+	<li>Datum</li>
+	<li>Losungsvers</li>
+	<li>Lehrtextvers</li>
+	</ol>
+  </p>
+  
+

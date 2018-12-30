@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once(sprintf("%s/lib.php", dirname(__FILE__)));
 
-function postprocess_xml ( $inxml , $codeplace = 'article' ) {
+function hhl_postprocess_xml ( $inxml , $codeplace = 'article' ) {
 
   
   $xml = simplexml_load_string($inxml);

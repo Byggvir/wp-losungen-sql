@@ -82,17 +82,17 @@ if ( class_exists( 'HHL_Losungen' ) )
   
   // Instantiate the plugin class
   
-  $hhl_losung = new HHL_Losungen();
+  $hhl_losungen = new HHL_Losungen();
   
   // Add a link to the settings page onto the plugin page
   
-  if ( isset( $hhl_losung ) )
+  if ( isset( $hhl_losungen ) )
    {
     // Add the settings link to the plugins page
     function HHL_settings_link( $links )
      {
       
-      $settings_link = '<a href="options-general.php?page=hhl_losung">Settings</a>';
+      $settings_link = '<a href="options-general.php?page=hhl_losungen">Settings</a>';
       array_unshift( $links, $settings_link );
       return $links;
       
@@ -101,7 +101,7 @@ if ( class_exists( 'HHL_Losungen' ) )
     $plugin = plugin_basename( __FILE__ );
     add_filter( "plugin_action_links_$plugin", HHL . 'settings_link' );
     
-   } //isset( $hhl_losung )
+   } //isset( $hhl_losungen )
   
  } //class_exists( 'HHL_Losungen' )
 
@@ -110,7 +110,7 @@ require_once( sprintf( "%s/includes/postprocess.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/lib.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/create_table.php", dirname( __FILE__ ) ) );
 
-require_once( sprintf( "%s/includes/shortcode_calendar.php", dirname( __FILE__ ) ) );
+// require_once( sprintf( "%s/includes/shortcodes.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/widget.php", dirname( __FILE__ ) ) );
 
 // We need some CSS to format the Losung 

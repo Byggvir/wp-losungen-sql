@@ -52,7 +52,7 @@ function hhl_install_data() {
 		$table_name, 
 		array( 
 			'Datum' => '17.04.1959', 
-			'Wtag' => 'Freitag'
+			'Wtag' => 'Freitag',
 			'Sonntag' => '', 
 			'Losungsvers' => '1. Mose 1,1', 
 			'Losungstext' => 'Am Anfang schuf Gott Himmel und Erde.', 

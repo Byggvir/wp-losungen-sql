@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package HHL-Herrnhuter-Losungen
  * @version 2019.0
@@ -19,36 +18,17 @@ $Plugin_Prefix = 'hhl_';
  ----------------------------------------------------------------
 */
 
-$HHl_DefLabels = 
+$HHL_DefLabels = 
   array ( 
-    'DownloadURL'   => 'DownloadURL'.
-    'id'            => 'Id',
-    'Datum'         => 'Datum',
-    'Wtag'	     	=> 'Wochentag',
-    'Sonntag'		=> 'Sonntag',
-    'Losungsvers'	=> 'Losungsvers',
-    'Losungstext'	=> 'Losungstext',
-    'Lehrstextvres'	=> 'Lehrtextvers',
-    'Lehrtext'		=> 'Lehrtext'
+    'title'		=> 'Titel',
+    'DownloadURL'	=> 'DownloadURL'
     );
 
 $HHL_DownloadSettingNames =
   array ( 
-   'DownloadURL'		=> 'Download-URL'
+    'title'		=> 'Titel',
+    'DownloadURL'	=> 'DownloadURL'
   );
-
-    
-$HHL_LosungenSettingNames =
-  array ( 
-    'id'            => 'Id',
-    'Datum'         => 'Datum',
-    'Wtag'	     	=> 'Wochentag',
-    'Sonntag'		=> 'Sonntag',
-    'Losungsvers'	=> 'Losungsvers',
-    'Losungstext'	=> 'Losungstext',
-    'Lehrstextvres'	=> 'Lehrtextvers',
-    'Lehrtext'		=> 'Lehrtext'
-    );
 
 /*
  ----------------------------------------------------------------
@@ -59,17 +39,9 @@ $HHL_LosungenSettingNames =
 
 $HHL_DefValues = 
   array ( 
-    'DownloadURL'   => 'https://www.losungen.de/fileadmin/media-losungen/download/Losung_%s_XML.zip',
-    'id'        => '1',
-    'Datum'		=> '17.04.1959',
-    'Wtag'		=> 'Freitag',
-    'Sonntag'		=> '',
-    'Losungsvers'		=> '1. Mose 1,1',
-    'Losungstext'		=> 'Am Anfang schuf Gott Himmel und Erde.',
-    'Lehrstextvres'		=> 'Matt 1,1',
-    'Lehrtext'		=> 'Dies ist das Buch der Geschichte Jesu Christi, des Sohnes Davids, des Sohnes Abrahams.'
+    'title'		=> 'DIE LOSUNGEN',
+    'DownloadURL'   => 'https://www.losungen.de/fileadmin/media-losungen/download/Losung_%s_XML.zip'
 
   );
-
 
 ?>

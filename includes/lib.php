@@ -1,5 +1,4 @@
 <?php
-
 /**
 /**
  * @package HHL-Herrnhuter-Losungen
@@ -10,9 +9,9 @@
  */
 
  
-define ('DownloadError' , '<p class=\"hhl-warning\">Die Losungen sind derzeit nicht verf&uuml;gbar!</p>');
+define ('HHL_DownloadError' , '<p class=\"hhl-warning\">Die Losungen sind derzeit nicht verf&uuml;gbar!</p>');
 
-function is_utf8($string) 
+function hhl_is_utf8($string) 
 {
   return preg_match('/(
     [\xC2-\xDF][\x80-\xBF]            # non-overlong 2-byte
@@ -28,11 +27,13 @@ function is_utf8($string)
 
 /* Get Losungen if CURL is not available.  */
 
-function get_withoutcurl ( $url ) 
+function hhl_get_withoutcurl ( $url ) 
 {
 
   $page='';
   $fd = fopen($url,"r");
+  $returned = '';
+
   if ($fd) 
   {
     while(!feof($fd))
@@ -51,7 +52,7 @@ function get_withoutcurl ( $url )
 
 /* Get list of events if CURL is available.  */
 
-function get_withcurl ( $url, $agent = 'WordpressPlugin' )
+function hhl_get_withcurl ( $url, $agent = 'WordpressPlugin' )
 {
   // use curl
   $sobl = curl_init($url);
@@ -65,6 +66,7 @@ function get_withcurl ( $url, $agent = 'WordpressPlugin' )
   $pageContent = curl_exec ($sobl);
   
   $sobl_info = curl_getinfo ($sobl);
+  $returned = '';
 	
   if($sobl_info['http_code'] == '200')
   {
@@ -74,7 +76,7 @@ function get_withcurl ( $url, $agent = 'WordpressPlugin' )
   else 
   {
     # Fehlermeldung:
-    $returned = DownloadError;
+    $returned = HHL_DownloadError;
   }
   return $returned;
 
@@ -86,7 +88,7 @@ function get_withcurl ( $url, $agent = 'WordpressPlugin' )
 
  */
 
-function converttoxmldate ( $datestr ) 
+function hhl_converttoxmldate ( $datestr ) 
 {
   date_default_timezone_set('UTC');
   if ($datestr != '') 
@@ -110,9 +112,9 @@ function hhl_getlosungen($download_url, $agent = 'WordPressPlugin' )
   if ( $download_url != '' ) 
   {
     if (function_exists('curl_init'))
-      $resturned = get_withcurl ($url );
+      $returned = hhl_get_withcurl ($url );
     else 
-      $returned = get_withoutcurl($url);
+      $returned = hhl_get_withoutcurl($url);
 
     return $returned ;
 
@@ -121,5 +123,4 @@ function hhl_getlosungen($download_url, $agent = 'WordPressPlugin' )
     return "<p>Keine Datei angegeben:" . $download_url . "</p>";
  
 }
-
 ?>
