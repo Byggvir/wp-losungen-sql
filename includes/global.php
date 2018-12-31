@@ -1,6 +1,6 @@
 <?php
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package WP-Losungen-SQL
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
