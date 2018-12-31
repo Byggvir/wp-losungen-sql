@@ -23,7 +23,6 @@ function hhl_install() {
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE IF NOT EXISTS $table_name (
-        id bigint(20) NOT NULL AUTO_INCREMENT,
         Datum datetime DEFAULT NULL,
         Wtag varchar(16) DEFAULT NULL,
         Sonntag varchar(255) DEFAULT NULL,
@@ -31,10 +30,9 @@ function hhl_install() {
         Losungstext varchar(2048) DEFAULT NULL,
         Lehrtextvers varchar(64) DEFAULT NULL,
         Lehrtext varchar(2048) DEFAULT NULL,
-        PRIMARY KEY (id),
-        KEY Datum (Datum),
+        PRIMARY KEY (datum),
         KEY Losungsvers (Losungsvers),
-        KEY Lehrtextvers (Lehrtextvers),
+        KEY Lehrtextvers (Lehrtextvers)
         )  $charset_collate;";
 
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
