@@ -1,91 +1,22 @@
 @charset UTF-8;
 /*
-Styles for Plugin Evangelische Termine 
+Styles for Plugin WP Losung SQL
 
 Author: Thomas Arend
-Date: 24.03.2018
-Version 0.6.3
+Date: 01.01.2019
+Version 2019.0
 */
 
-.Grey {
-background-color:#F5F5F5;
+tahhl_losungstext {
+ 
+    color: green;
+    text-align: right;
+ 
 }
 
-.White {
-background-color:white;
-}
-
-.evt-article .evt-daybar {
-font-size:1em;
-}
-
-.evt-article .evt-title {
-width:15em;
-}
-
-.evt-article td {
-padding:.6em;
-}
-
-.evt-day-Mo,.evt-day-Mi,.evt-day-Mi,.evt-day-Do,.evt-day-Fr,.evt-day-Sa {
-color:white;
-}
-
-.evt-day-So,.evt-day-holiday {
-color:red;
-}
-
-.evt-daybar {
-background-color:#124808;
-color:white;
-font-size:.9em;
-font-weight:bold;
-}
-
-.evt-link-vid {
-font-size:.5em;
-}
-
-.evt-monthbar {
-background-color:#249610;
-color:white;
-font-size:1.25em;
-font-weight:bold;
-text-align:center;
-}
-
-.evt-span-description {
-font-style:italic;
-}
-
-.evt-span-person {
-color:darkgrey;
-}
-
-.evt-span-title {
-font-weight:bold;
-}
-
-.evt-startend {
-color:black;
-}
-
-.evt-widget {
-font-size:.75em;
-}
-
-.evt-widget .evt-daybar {
-font-size:.9em;
-}
-
-.evt-widget .evt-monthbar,.evt-article .evt-monthbar {
-font-size:1.25em;
-}
-
-.evt-widget .evt-title {
-width:10em;
-}
-
-.evt-widget td {
-padding:.2em;
+tahhl_losungstextvers, tahhl_lehrtextvers {
+ 
+    color: blue;
+    text-align: right;
+ 
 }
