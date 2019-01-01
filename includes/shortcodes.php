@@ -16,6 +16,45 @@ require_once(sprintf("%s/postprocess.php", dirname(__FILE__)));
 
 // Function for the shorttag losung
 
+function tahhl_getLosungOfTheDay() {
+
+	global $wpdb ;
+	
+	$innerhtml="";
+	$Today=date("Y-m_d")
+	
+    $TodaysLosung=$wpdb->get_results(
+	"
+	select *
+	from losungen
+	where Datum = '$Today'
+        ;       
+	"
+	, 
+	ARRAY_A
+	);
+	
+	if ( $TodaysLosung ) {
+		foreach ( $spamlist as $row) {
+
+		  $innerhtml .= '<p class="tahhl_losungtext">' . tahhl_convertTextToHtml($row['Losungstext']) . '<p>\n';
+		  $innerhtml .= '<p class="tahhl_losungtextvers">' . $row['Losungsvers'] . '<p>\n';
+		  $innerhtml .= '<p class="tahhl_lehrtext">' . tahhl_convertTextToHtml($row['Lehrtext']) . '<p>\n';
+		  $innerhtml .= '<p class="tahhl_lehrtextvers">' . $row['Lehrtextvers'] . '<p>\n';
+		}
+	}
+
+	return wptexturize( $innerhtml ) ;
+}
+
+function tahhl_convertTextToHtml($text)
+{
+	$text = preg_replace('#/(.*?:)/#', '<span class="tahhl_losungseinleitung">$1</span>', $text, 1);
+	$text = preg_replace('/#(.*?)#/', '<span class="tahhl_losungvervorhebung">$1</span>', $text);
+	
+	return $text;
+}
+
 function tahhl_losung($atts) {
 
   global $Plugin_Prefix;
@@ -28,13 +67,13 @@ function tahhl_losung($atts) {
     $TAHHL_DefValues;
     
   if ( is_singular () ) {
-
+    $Losung =  tahhl_getLosungOfTheDay();
+    
   return "
     <!-- Begin shortcode Losung -->
     <div class=\"tahhl-losung\">
-    Noch nicht implementiert!
-    </div>
-    <p style=\"font-size: x-small;\">Powered by WP Losungen SQL Plugin - &copy Thomas Arend, Rheinbach</p>
+    <h3>Die heutige Losung</h2>
+    $Losung
     <!-- End shortcode Losung  -->
     ";
 } else { // if is_sigular

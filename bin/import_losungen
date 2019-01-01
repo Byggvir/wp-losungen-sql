@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MYSQL="mysql --user=wordpress --password=$1" # << Insert your mysql DB passowrd here.
+MYSQL="mysql --user=wordpress --password=$1 wordpress" # << Insert your mysql DB passowrd here.
 
 echo "
 USE wordpress;
