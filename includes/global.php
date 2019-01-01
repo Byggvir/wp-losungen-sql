@@ -22,12 +22,15 @@ $Plugin_Prefix = 'tahhl_';
 $TAHHL_DefLabels = 
   array ( 
     'title'		=> 'Titel',
+    'bible'     => 'Bibelausgabe' ,
     'DownloadURL'	=> 'DownloadURL'
+    
     );
 
 $TAHHL_DownloadSettingNames =
   array ( 
     'title'		=> 'Titel',
+    'bible'     => 'Bibelausgabe (K&uuml;rzel)' ,
     'DownloadURL'	=> 'DownloadURL'
   );
 
@@ -41,6 +44,7 @@ $TAHHL_DownloadSettingNames =
 $TAHHL_DefValues = 
   array ( 
     'title'		=> 'DIE LOSUNGEN',
+    'bible'		=> 'LUT',
     'DownloadURL'   => 'https://www.losungen.de/fileadmin/media-losungen/download/Losung_%s_XML.zip'
 
   );

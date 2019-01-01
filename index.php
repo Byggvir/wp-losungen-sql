@@ -1,21 +1,40 @@
 <?php
 
 /*****
-Plugin Name: Herrnhuter Losungen SQL
-Plugin URI: http://byggvir.de/wp-losungen-sql/
-Description: Dieses Plugin stellt eine Schnittstelle zu den Losungen der Herrnhuter Brüdergemeine bereit. Mit dem Shortcode hhl-losung kan eine Losung in Seiten und Artikel eingebunden werden. Daneben steht ein Widget für die Anzeige der Tages-, Jahres oder Wochenlosung zur Verfügung. Die Losungen werden in einer Tabelle der WordPress Datenbank gespeichert.
+* @link              http://byggvir.de
+* @since             2019.0.0
+* @package           Herrnhuter Losungen SQL
 
-Author: Thomas Arend
-Version: 2019.0.1
-Date: 30.12.2018
-Author URI: http://byggvir.de/
-License: GPL 3 or later
+* @plugin-wordpress
+* Plugin Name: Herrnhuter Losungen SQL
+* Plugin URI: http://byggvir.de/wp-losungen-sql/
+* Description: Dieses Plugin stellt die Losungen und Lehrtexte der Herrnhuter Brüdergemeine in Wordpress bereit.
+*
+* Mit dem Shortcode "losung" kann eine Losung in Seiten oder Artikel eingebunden werden. 
+* Der shortcode versteht die Parameter date, from to und max. Dabei hat date Vorrang vor den anderen Paratmetern
+* In "date", "from" und "to" kann ein Datum in Englisch eingegeben werden. 
+*
+* Beispiel: [losung date="yesterday"]
+*
+* Zeigt die Losung des gestrigen Tages an.
+*
+* Beispiel: [losung from="yast monday" to="next sunday"]
+*
+* Zeigt die Losungen der Woche in einer Tabelle an.
 
+
+* Author: Thomas Arend
+* Version: 2019.0.0
+* Date: 01.01.2019
+* Author URI: http://byggvir.de/
+* License: GPL-3.0+
+* License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+*
 */
 
 /**
  * @package TAHHL-Herrnhuter-Losungen
- * @version 2019.0
+ * @version 2019.0.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -33,7 +52,7 @@ define( "TAHHL", 'TAHHL_' );
 
 if ( !class_exists( TAHHL.'Losungen' ) )
  {
-  class HHL_Losungen
+  class TAHHL_Losungen
    {
     /**
      * Construct the plugin object
@@ -125,8 +144,5 @@ function tahhl_add_stylesheet( )
 
 add_action( 'wp_print_styles', 'tahhl_add_stylesheet' );
 
-// Add the Shortcode
-
-add_shortcode( 'losung', 'tahhl_losung' );
 
 ?>

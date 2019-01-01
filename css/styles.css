@@ -7,9 +7,6 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-//Security check!
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-
 .tahhl-losung {
 
   border : 0.2em solid #600000; 
@@ -19,16 +16,38 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
   
 }
 
-.tahhl_losungstext, .tahhl_lehrtext {
+.tahhl-losungstext, .tahhl-lehrtext {
  
     color: green;
     text-align: left;
  
 }
 
-.tahhl_losungsvers, .tahhl_lehrtextvers {
+.tahhl-losungsvers, .tahhl-lehrtextvers {
  
     color: blue;
     text-align: right;
  
+}
+
+.tahhl-header3 {
+    color : red;
+}
+
+.tahhl-cell {
+   vertical-align : top;
+   width: 40%;
+    
+}
+
+.tahhl-losungscell , .tahhl-lehrtextcell {
+   vertical-align : top;
+   
+    
+}
+
+.tahhl-datum {
+    width: 20%;
+
+    
 }
