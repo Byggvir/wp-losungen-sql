@@ -100,7 +100,7 @@ class TAHHL_Losung_APISQL {
     }
     
 	
-	$SQL .= $limit . " ;";
+	$SQL .= $limit . " order by Datum ;";
 	
     $Losungen=$wpdb->get_results( $SQL, ARRAY_A );
 	
