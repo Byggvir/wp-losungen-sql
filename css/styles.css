@@ -1,11 +1,14 @@
 @charset UTF-8;
-/*
-Styles for Plugin WP Losung SQL
+/**
+ * @package TAHHL-Herrnhuter-Losungen
+ * @version 2019.0
+ * @author Thomas Arend <thomas@arend-rhb.de>
+ * @copyright 2019 Thomas Arend Rheinbach Germany
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ */
 
-Author: Thomas Arend
-Date: 01.01.2019
-Version 2019.0
-*/
+//Security check!
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 .tahhl-losung {
 

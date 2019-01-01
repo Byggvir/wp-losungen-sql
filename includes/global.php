@@ -9,11 +9,7 @@
  
 $Plugin_Prefix = 'tahhl_';
 
-$TAHHL_CopyRight = "
-    	<p class=\"tahhl-losung-copy\">
-		<a href=\"http://www.herrnhuter.de\" target=\"_blank\" title=\"Evangelische Br&uuml;der-Unit&auml;t\">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br>
-		<a href=\"https://www.losungen.de\" target=\"_blank\" title=\"www.losungen.de\">Weitere Informationen finden Sie hier</a>
-";
+
 
 /* 
  ----------------------------------------------------------------

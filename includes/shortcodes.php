@@ -11,11 +11,19 @@
 //Security check!
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-require_once(sprintf("%s/global.php", dirname(__FILE__)));
-require_once(sprintf("%s/postprocess.php", dirname(__FILE__)));
+require_once(plugin_dir_path( __FILE__ ) . 'includes/global.php');
+require_once(plugin_dir_path( __FILE__ ) . 'includes/postprocess.php');
+require_once(plugin_dir_path( __FILE__ ) . 'includes/hh_copyright.php');
 
 // Function for the shorttag losung
 
+/**
+* Formtiere Markup eines Verses
+* 
+* @param text $text 
+* @return formtierter text
+*/
+	 
 function tahhl_convertTextToHtml($text)
 {
 	$text = preg_replace('#/(.*?:)/#', '<span class="tahhl_losungseinleitung">$1</span>', $text, 1);
@@ -69,13 +77,15 @@ function tahhl_losung($atts) {
     $Losung =  tahhl_getLosungOfTheDay();
     
   if ( is_singular () ) {
-    
+  
+  $CopyRight = HHL_CopyRight();
+  
   return "
     <!-- Begin shortcode Losung -->
     <div class=\"tahhl-losung\">
     <h3>Die heutige Losung</h3>
     $Losung
-    $TAHHL_CopyRight	
+    $CopyRight	
     <!-- End shortcode Losung  -->
     ";
 } else { // if is_sigular
