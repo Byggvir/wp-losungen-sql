@@ -16,9 +16,8 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once(plugin_dir_path( __FILE__ ) . '/global.php');
-require_once(plugin_dir_path( __FILE__ ) . '/postprocess.php');
-require_once(plugin_dir_path( __FILE__ ) . '/hh_copyright.php');
 require_once(plugin_dir_path( __FILE__ ) . '/class_losung.php');
+require_once(plugin_dir_path( __FILE__ ) . '/copyright.php');
 
 class TAHHL_ShortCodes {
 
@@ -57,31 +56,37 @@ class TAHHL_ShortCodes {
         'max' => '0',
     ), $atts));
     
+    $show = false;
+    
     $API =  new TAHHL_Losung_APISQL ();
     
     if ( $date != '' ) {
       $Losung =  $API->getLosungOfTheDay($date);
+      $show = true;
     } elseif (($from != '') or ($to != '')) {
       $Losung = $API->getLosungList($from, $to, $max) ;
+      $show= false;    
     } else {
       $Losung =  $API->getLosungOfTheDay();
+      $show = true;
     }
         
     
-    if ( is_singular () ) {
+    if ( is_singular () or $show ) {
   
-      $CopyRight = HH_CopyRight();
+      $Copyright = HH_CopyRight();
   
       return "
         <!-- Begin shortcode Losung -->
         <div class=\"tahhl-losungOfTheDay\">
         $Losung
-        $CopyRight	
+        $Copyright
+        </div>
         <!-- End shortcode Losung  -->
       ";
     }
     else { // if is_sigular
-      return "";
+      return "<p>Die Losungen ... </p>";
     }
   }
 } // End class

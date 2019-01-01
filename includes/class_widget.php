@@ -20,8 +20,9 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-require_once(sprintf("%s/global.php", dirname(__FILE__)));
-
+require_once plugin_dir_path( __FILE__ ) . 'global.php';
+require_once plugin_dir_path( __FILE__ ) . 'class_losung.php';
+require_once(plugin_dir_path( __FILE__ ) . 'copyright.php');
 /**
  Losungen widget for SQL
 **/
@@ -56,8 +57,14 @@ class TAHHL_Losungen_Widget extends WP_Widget {
 
 	if ( $wg_atts['title'] )
 		echo $wg_atts['title'];
-	echo "<p style=\"font-size: x-small;\">Powered by WP Losungen SQL Plugin - &copy Thomas Arend, Rheinbach</p>";
-
+    
+    $API=new TAHHL_Losung_APISQL ();
+    
+    echo "<div class=\"tahhl-widget-losung\">";
+    echo $API->getLosungOfTheDay();
+    echo HH_Copyright();
+    echo "</div>";
+    
 	}
 
 	/** @see WP_Widget::update */

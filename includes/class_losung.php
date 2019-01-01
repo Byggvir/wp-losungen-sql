@@ -67,7 +67,7 @@ class TAHHL_Losung_APISQL {
 		foreach ( $LosungOfTheDay as $row) {
           
           ($lday == date('Y-m-d',time())) ? $hdate = 'Die heutige Losung' : $hdate = "Die Losung vom " . date('d.m.Y',strtotime($row['Datum']));
-          $innerhtml  = '<h3 class="tahl-header3">' . $hdate . '</h3>' ."\n";
+          $innerhtml  = '<h4 class="tahhl-header">' . $hdate . '</h4>' ."\n";
 		  $innerhtml .= '<p class="tahhl-losungstext">' . $this->convertTextToHtml($row['Losungstext']) . '</p>' . "\n";
 		  $innerhtml .= '<p class="tahhl-losungsvers">' .  $this->linkToBibleServer($row['Losungsvers']) . '</p>'  . "\n";
 		  $innerhtml .= '<p class="tahhl-lehrtext">' . $this->convertTextToHtml($row['Lehrtext']) . '</p>' . "\n";
@@ -82,26 +82,35 @@ class TAHHL_Losung_APISQL {
 
 	global $wpdb ;
 	
-	$innerhtml='<table class=tahhl-table">';
+	$innerhtml='<table class=tahhl-table"><tr><th class="tahhl-tab-head tahhl-tab-head-datum">Tag</th><th class="tahhl-tab-head tahhl-tab-head-losung">Losung</th><th class="tahhl-tab-head tahhl-tab-head-lehrtext">Lehrtext</th></tr>';
 	
-	$sqlfrom=$this->convertDate($from);
-	$sqlto=$this->convertDate($to);
-    
-    ( is_numeric($max)) and ($max>0) ? $limit = "limit $max" : $limit = "";
+	($from != '') ? $sqlfrom = ' Datum >="' . $this->convertDate($from) .'" ' : $sqlfrom ='' ;
+	($to != '')   ? $sqlto = ' Datum <="' . $this->convertDate($to) .'" '  : $sqlto = '' ;
+	
+    ( is_numeric($max)) and ($max>0) ? $limit = " limit $max " : $limit = "";
     
 	
-	$SQL="select *	from losungen where ";
-	$SQL .= ' Datum >= "' . $sqlfrom .'" and Datum <= "' . $sqlto .'" ' .$limit . ' ;';
+	$SQL="select * from losungen ";
+	
+	if ($sqlfrom !='' or  $sqlto != '') { $SQL .= "where " ; }
+	if ($sqlfrom !='' and  $sqlto != '') {
+      $SQL .=  $sqlfrom . 'and' . $sqlto ; }
+    else {
+      $SQL .= $sqlfrom . $sqlto ;
+    }
+    
+	
+	$SQL .= $limit . " ;";
 	
     $Losungen=$wpdb->get_results( $SQL, ARRAY_A );
 	
 	if ( $Losungen ) {
 		foreach ( $Losungen as $row) {
 
-		  $innerhtml .= '<tr><td class="tahhl-datum">' . date('D., d.m.Y',strtotime($row['Datum'])) . '</td>'  . "\n";
-		  $innerhtml .= '<td class="tahhl-cell tahhl-losungscell"><p class="tahhl-losungstext">' . $this->convertTextToHtml($row['Losungstext']) . '</p>' . "\n";
+		  $innerhtml .= '<tr><td class="tahhl-tab-cell tahhl-tab-cell-datum">' . date('D., d.m.Y',strtotime($row['Datum'])) . '</td>'  . "\n";
+		  $innerhtml .= '<td class="tahhl-tab-cell tahhl-tab-cell-losung"><p class="tahhl-losungstext">' . $this->convertTextToHtml($row['Losungstext']) . '</p>' . "\n";
 		  $innerhtml .= '<p class="tahhl-losungsvers">' .  $this->linkToBibleServer($row['Losungsvers']) . '<p></td>'  . "\n";
-		  $innerhtml .= '<td class="tahhl-cell tahhl-lehrtextcell"><p class="tahhl-lehrtext">' . $this->convertTextToHtml($row['Lehrtext']) . '</p>' . "\n";
+		  $innerhtml .= '<td class="tahhl-tab-cell tahhl-tab-cell-lehrtext"><p class="tahhl-lehrtext">' . $this->convertTextToHtml($row['Lehrtext']) . '</p>' . "\n";
 		  $innerhtml .= '<p class="tahhl-lehrtextvers">' . $this->linkToBibleServer($row['Lehrtextvers']) . '</p></td></tr>' . "\n";
 		}
 	}

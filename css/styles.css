@@ -7,12 +7,13 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-.tahhl-losung {
+.tahhl-losung , .tahhl-losungOfTheDay {
 
   border : 0.2em solid #600000; 
   border-radius: 1em;
   box-shadow: 0.2em 0.2em 0.1em #802020;
   padding : 1.0em;
+  margin: 0.2em;
   
 }
 
@@ -30,24 +31,39 @@
  
 }
 
-.tahhl-header3 {
+.tahhl-losung-copyright {
+   font-size: 0.3em;
+   
+}
+
+
+.tahhl-header {
     color : red;
 }
 
-.tahhl-cell {
+.tahhl-tab-head,
+.tahhl-tab-head-datum ,
+.tahhl-tab-head-losung,
+.tahhl-tab-head-lehrtext {
+    text-align: center;
+    font-size : 1.5 em;
+}
+
+.tahhl-tab-cell {
    vertical-align : top;
    width: 40%;
     
 }
 
-.tahhl-losungscell , .tahhl-lehrtextcell {
+.tahhl-tab-cell-losung,
+.tahhl-tab-cell-lehrtext {
    vertical-align : top;
-   
     
 }
 
+.tahhl-tab-head-datum,
 .tahhl-datum {
     width: 20%;
-
+    width: 20%;
     
 }
