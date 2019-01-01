@@ -8,8 +8,12 @@ Version 2019.0
 */
 
 .tahhl-losung {
-    
-  border : 1px solid black;   
+
+  border : 0.1em solid #600000; 
+  border-radius: 1em;
+  box-shadow: 0.2em 0.2em 0.1em #802020;
+  padding : 0,5em;
+  
 }
 
 .tahhl_losungstext, .tahhl_lehrtext {
