@@ -1,10 +1,19 @@
 <?php
 /**
  * @package TAHHL-Herrnhuter-Losungen
- * @version 2019.0
+ * @version 2019.0.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+
+
+ * Author: Thomas Arend
+ * Version: 2019.0.0
+ * Date: 01.01.2019
+ * Author URI: http://byggvir.de/
+ * License: GPL-3.0+
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+ *
  */
 
 // Security check: Exit if script is called directly
@@ -12,8 +21,6 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once(sprintf("%s/global.php", dirname(__FILE__)));
-require_once(sprintf("%s/postprocess.php", dirname(__FILE__)));
-
 
 /**
  Losungen widget for SQL

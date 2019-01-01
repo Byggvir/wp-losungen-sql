@@ -11,10 +11,6 @@
 //Security check!
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-require_once(plugin_dir_path( __FILE__ ) . '/global.php');
-require_once(plugin_dir_path( __FILE__ ) . '/postprocess.php');
-require_once(plugin_dir_path( __FILE__ ) . '/hh_copyright.php');
-
 // Function for the shorttag losung
 
 

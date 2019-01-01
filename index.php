@@ -124,13 +124,19 @@ if ( class_exists( TAHHL.'Losungen' ) )
   
  } //class_exists( 'HHL_Losungen' )
 
-require_once( sprintf( "%s/includes/global.php", dirname( __FILE__ ) ) );
+require_once plugin_dir_path( __FILE__ ) . 'includes/global.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/lib.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/create_table.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class_shortcodes.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class_widget.php';
+/*
 require_once( sprintf( "%s/includes/postprocess.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/lib.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/create_table.php", dirname( __FILE__ ) ) );
 
 require_once( sprintf( "%s/includes/shortcodes.php", dirname( __FILE__ ) ) );
-require_once( sprintf( "%s/includes/widget.php", dirname( __FILE__ ) ) );
+require_once( sprintf( "%s/includes/class_widget.php", dirname( __FILE__ ) ) );
+*/
 
 // We need some CSS to format the Losung 
 
