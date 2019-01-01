@@ -44,8 +44,8 @@ function tahhl_getLosungOfTheDay() {
 	if ( $TodaysLosung ) {
 		foreach ( $TodaysLosung as $row) {
 
-		  $innerhtml .= '<p class="tahhl_losungtext">' . tahhl_convertTextToHtml($row['Losungstext']) . '<p>' . "\n";
-		  $innerhtml .= '<p class="tahhl_losungtextvers">' . $row['Losungsvers'] . '<p>'  . "\n";
+		  $innerhtml .= '<p class="tahhl_losungstext">' . tahhl_convertTextToHtml($row['Losungstext']) . '<p>' . "\n";
+		  $innerhtml .= '<p class="tahhl_losungsvers">' . $row['Losungsvers'] . '<p>'  . "\n";
 		  $innerhtml .= '<p class="tahhl_lehrtext">' . tahhl_convertTextToHtml($row['Lehrtext']) . '<p>' . "\n";
 		  $innerhtml .= '<p class="tahhl_lehrtextvers">' . $row['Lehrtextvers'] . '<p>' . "\n";
 		}
@@ -72,7 +72,7 @@ function tahhl_losung($atts) {
   return "
     <!-- Begin shortcode Losung -->
     <div class=\"tahhl-losung\">
-    <h3>Die heutige Losung</h2>
+    <h3>Die heutige Losung</h3>
     $Losung
     <!-- End shortcode Losung  -->
     ";
