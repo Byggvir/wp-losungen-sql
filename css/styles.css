@@ -36,9 +36,12 @@
    
 }
 
-
 .tahhl-header {
     color : red;
+}
+
+.tahh-table {
+    
 }
 
 .tahhl-tab-head,
@@ -51,8 +54,7 @@
 
 .tahhl-tab-cell {
    vertical-align : top;
-   width: 40%;
-    
+  
 }
 
 .tahhl-tab-cell-losung,
@@ -62,8 +64,7 @@
 }
 
 .tahhl-tab-head-datum,
-.tahhl-datum {
-    width: 20%;
+.tahhl-tab-cell-datum {
     width: 20%;
     
 }

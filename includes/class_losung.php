@@ -82,7 +82,7 @@ class TAHHL_Losung_APISQL {
 
 	global $wpdb ;
 	
-	$innerhtml='<table class=tahhl-table"><tr><th class="tahhl-tab-head tahhl-tab-head-datum">Tag</th><th class="tahhl-tab-head tahhl-tab-head-losung">Losung</th><th class="tahhl-tab-head tahhl-tab-head-lehrtext">Lehrtext</th></tr>';
+	$innerhtml='<table class="tahhl-table"><tr><th class="tahhl-tab-head tahhl-tab-head-datum">Tag</th><th class="tahhl-tab-head tahhl-tab-head-losung">Losung</th><th class="tahhl-tab-head tahhl-tab-head-lehrtext">Lehrtext</th></tr>' . "\n";
 	
 	($from != '') ? $sqlfrom = ' Datum >="' . $this->convertDate($from) .'" ' : $sqlfrom ='' ;
 	($to != '')   ? $sqlto = ' Datum <="' . $this->convertDate($to) .'" '  : $sqlto = '' ;
