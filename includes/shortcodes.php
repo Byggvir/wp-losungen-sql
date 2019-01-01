@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 require_once(sprintf("%s/global.php", dirname(__FILE__)));
 require_once(sprintf("%s/postprocess.php", dirname(__FILE__)));
 
-// Function for the shorttag. Include the event table.
+// Function for the shorttag losung
 
 function tahhl_losung($atts) {
 
@@ -30,12 +30,12 @@ function tahhl_losung($atts) {
   if ( is_singular () ) {
 
   return "
-    <!-- Begin shortcode Losungen -->
+    <!-- Begin shortcode Losung -->
     <div class=\"tahhl-losung\">
-    Noch nicht implrmentiert
+    Noch nicht implementiert!
     </div>
     <p style=\"font-size: x-small;\">Powered by WP Losungen SQL Plugin - &copy Thomas Arend, Rheinbach</p>
-    <!-- End shortcode Ev. Termine -->
+    <!-- End shortcode Losung  -->
     ";
 } else { // if is_sigular
   return "-";
