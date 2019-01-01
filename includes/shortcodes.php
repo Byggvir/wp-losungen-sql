@@ -16,7 +16,7 @@ require_once(sprintf("%s/postprocess.php", dirname(__FILE__)));
 
 // Function for the shorttag. Include the event table.
 
-function tahhl_losungen($atts) {
+function tahhl_losung($atts) {
 
   global $Plugin_Prefix;
  

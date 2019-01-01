@@ -110,7 +110,7 @@ require_once( sprintf( "%s/includes/postprocess.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/lib.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/create_table.php", dirname( __FILE__ ) ) );
 
-// require_once( sprintf( "%s/includes/shortcodes.php", dirname( __FILE__ ) ) );
+require_once( sprintf( "%s/includes/shortcodes.php", dirname( __FILE__ ) ) );
 require_once( sprintf( "%s/includes/widget.php", dirname( __FILE__ ) ) );
 
 // We need some CSS to format the Losung 
