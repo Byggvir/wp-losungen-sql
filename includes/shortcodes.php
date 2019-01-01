@@ -59,6 +59,7 @@ function tahhl_losung($atts) {
   global $Plugin_Prefix;
  
   global
+    $TAHHL_CopyRight ,
     $TAHHL_DefLabels ,
     $TAHHL_CalenderSettingNames, 
     $TAHHL_ServerSettingNames,
@@ -74,6 +75,7 @@ function tahhl_losung($atts) {
     <div class=\"tahhl-losung\">
     <h3>Die heutige Losung</h3>
     $Losung
+    $TAHHL_CopyRight	
     <!-- End shortcode Losung  -->
     ";
 } else { // if is_sigular
