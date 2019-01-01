@@ -1,6 +1,6 @@
 <?php
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package TAHHL-Herrnhuter-Losungen
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
@@ -19,13 +19,13 @@ require_once(sprintf("%s/postprocess.php", dirname(__FILE__)));
  Losungen widget for SQL
 **/
  
-class HHL_Losungen_Widget extends WP_Widget {
+class TAHHL_Losungen_Widget extends WP_Widget {
 	
 	/** constructor */
 	function __construct() {
 		parent::__construct( 
-			/* Base ID */ 'hhl_losungen_widget' ,
-			/* Name */ 'HHL Losungen Widget' ,
+			/* Base ID */ 'tahhl_losungen_widget' ,
+			/* Name */ 'TAHHL Losungen Widget' ,
 			array( 'description' => 'Zeigt die Losung des Tages an.' ) );
 	}
 
@@ -33,19 +33,19 @@ class HHL_Losungen_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 
       	global
-          $HHL_DefLabels ,
-      	  $HHL_DownloadSettingNames, 
-      	  $HHL_LosungenSettingNames,
-      	  $HHL_DefValues;
+          $TAHHL_DefLabels ,
+      	  $TAHHL_DownloadSettingNames, 
+      	  $TAHHL_LosungenSettingNames,
+      	  $TAHHL_DefValues;
  
 	$wg_atts = $args;
 
 	foreach ( $instance as $key => $value) {
-		$wg_atts[$key] = Trim(empty($instance[$key]) ? $HHL_DefValues[$key] : $instance[$key]);
+		$wg_atts[$key] = Trim(empty($instance[$key]) ? $TAHHL_DefValues[$key] : $instance[$key]);
 	}	
 	$wg_atts['title'] = apply_filters('widget_title', $wg_atts['title']);
 	//if ($wg_atts['script'] == '' ) $wg_atts['script'] = 'xml.php';
-	// $termine=postprocess_xml(hhl_getlosungen($wg_atts,$HHL_LosungenSettingNames),'widget');
+	// $termine=postprocess_xml(hhl_getlosungen($wg_atts,$TAHHL_LosungenSettingNames),'widget');
 
 	if ( $wg_atts['title'] )
 		echo $wg_atts['title'];
@@ -57,13 +57,13 @@ class HHL_Losungen_Widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 
       	global
-          $HHL_DefLabels ,
-      	  $HHL_DownloadSettingNames, 
-      	  $HHL_LosungenSettingNames,
-      	  $HHL_DefValues;
+          $TAHHL_DefLabels ,
+      	  $TAHHL_DownloadSettingNames, 
+      	  $TAHHL_LosungenSettingNames,
+      	  $TAHHL_DefValues;
   
 	$instance = $old_instance;
-	foreach ( $HHL_DefValues as $key => $value ) {
+	foreach ( $TAHHL_DefValues as $key => $value ) {
         	$instance[$key] = strip_tags($new_instance[$key]);
 	}
      
@@ -74,28 +74,28 @@ class HHL_Losungen_Widget extends WP_Widget {
 function form( $instance ) {
 
       	global
-          $HHL_DefLabels ,
-      	  $HHL_DownloadSettingNames, 
-      	  $HHL_LosungenSettingNames,
-      	  $HHL_DefValues;
+          $TAHHL_DefLabels ,
+      	  $TAHHL_DownloadSettingNames, 
+      	  $TAHHL_LosungenSettingNames,
+      	  $TAHHL_DefValues;
  		
 	if ( $instance ) {
-		$instance = wp_parse_args( (array) $instance, $HHL_DefValues ); 
-        	foreach ( $HHL_DefValues as $key => $value ) {
+		$instance = wp_parse_args( (array) $instance, $TAHHL_DefValues ); 
+        	foreach ( $TAHHL_DefValues as $key => $value ) {
 			$$key	= esc_attr( $instance[ $key ] );
 		}
 	}
 	else {
-        	foreach ( $HHL_DefValues as $key => $value ) {
+        	foreach ( $TAHHL_DefValues as $key => $value ) {
 			$$key	= __( $value , 'text_domain' );
 		}
 	}
 	echo '<p>' ;
 
-	foreach ( $HHL_DefValues as $key => $value ) {
+	foreach ( $TAHHL_DefValues as $key => $value ) {
 	?>
 		
-	<label for="<?php echo $this->get_field_id($key); ?>"><?php _e($HHL_DefLabels[$key].':'); ?></label> 
+	<label for="<?php echo $this->get_field_id($key); ?>"><?php _e($TAHHL_DefLabels[$key].':'); ?></label> 
 	<input class="widefat" id="<?php echo $this->get_field_id($key); ?>" name="<?php echo $this->get_field_name($key); ?>" type="text" value="<?php echo $$key; ?>" />
 
 	<?php
@@ -104,10 +104,10 @@ function form( $instance ) {
 
 }
 
-} // class HHL_Losungen_Widget
+} // class TAHHL_Losungen_Widget
 
-// register HHL_Losungen_Widget
+// register TAHHL_Losungen_Widget
 
-add_action( 'widgets_init', create_function( '', 'register_widget("HHL_Losungen_Widget");' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget("TAHHL_Losungen_Widget");' ) );
 
 ?>

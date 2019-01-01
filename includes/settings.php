@@ -1,6 +1,6 @@
 <?php
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package TAHHL-Herrnhuter-Losungen
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
@@ -11,9 +11,9 @@
 //Security check!
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-if(!class_exists('HHL_Losungen_Settings'))
+if(!class_exists(TAHHL.'Losungen_Settings'))
 {
-class HHL_Losungen_Settings
+class TAHHL_Losungen_Settings
 {
 /**
 * Construct the plugin object
@@ -38,36 +38,36 @@ public function admin_init()
   require_once(sprintf("%s/global.php", dirname(__FILE__)));
 
   global
-  $HHL_DefLabels,
-  $HHL_DownloadSettingNames,
-  $HHL_DefValues;
+  $TAHHL_DefLabels,
+  $TAHHL_DownloadSettingNames,
+  $TAHHL_DefValues;
       
   
 // register your plugin's settings
 
 
-  foreach ($HHL_DefValues as $key => $value) {
-    register_setting('hhl-group', 'hhl_'.$key, array( 'string',$key,'',false,$value));
+  foreach ($TAHHL_DefValues as $key => $value) {
+    register_setting('tahhl-group', TAHHL.$key, array( 'string',$key,'',false,$value));
   }
 
   add_settings_section(
-    'hhl_DownloadSection', 
+    'tahhl_DownloadSection', 
     'HHL Download Einsteliungen ', 
     array(&$this, 'settings_section_download'), 
-    'hhl_losungen'
+    'tahhl_losungen'
   );
 
 // add your setting's fields
 
-  foreach ($HHL_DownloadSettingNames as $key => $value) {
+  foreach ($TAHHL_DownloadSettingNames as $key => $value) {
     add_settings_field(
-      'hhl_'.$key, 
-      $HHL_DefLabels[$key], 
+      TAHHL.$key, 
+      $TAHHL_DefLabels[$key], 
       array(&$this, 'settings_field_input_text'), 
-      'hhl_losungen', 
-      'hhl_DownloadSection',
+      'tahhl_losungen', 
+      'tahhl_DownloadSection',
       array(
-        'field' => 'hhl_'.$key
+        'field' => TAHHL.$key
       )
     );
   }
@@ -111,7 +111,7 @@ public function add_menu() {
     'Herrnhuter Br&uuml;dergemeine', 
     'Losungen', 
     'manage_options', 
-    'hhl_losungen', 
+    'tahhl_losungen', 
     array(&$this, 'plugin_settings_page')
   );
 
@@ -131,6 +131,6 @@ public function plugin_settings_page() {
   include(sprintf("%s/setting-template.php", dirname(__FILE__)));
 
 } // END public function plugin_settings_page()
-} // END class HHL_Losungen_Settings
-} // END if(!class_exists('HHL_Losungen_Settings'))
+} // END class TAHHL_Losungen_Settings
+} // END if(!class_exists('TAHHL_Losungen_Settings'))
 ?>

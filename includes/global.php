@@ -18,13 +18,13 @@ $Plugin_Prefix = 'hhl_';
  ----------------------------------------------------------------
 */
 
-$HHL_DefLabels = 
+$TAHHL_DefLabels = 
   array ( 
     'title'		=> 'Titel',
     'DownloadURL'	=> 'DownloadURL'
     );
 
-$HHL_DownloadSettingNames =
+$TAHHL_DownloadSettingNames =
   array ( 
     'title'		=> 'Titel',
     'DownloadURL'	=> 'DownloadURL'
@@ -37,7 +37,7 @@ $HHL_DownloadSettingNames =
  ----------------------------------------------------------------
 */
 
-$HHL_DefValues = 
+$TAHHL_DefValues = 
   array ( 
     'title'		=> 'DIE LOSUNGEN',
     'DownloadURL'   => 'https://www.losungen.de/fileadmin/media-losungen/download/Losung_%s_XML.zip'

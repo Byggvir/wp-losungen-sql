@@ -1,7 +1,7 @@
 <?php 
 /**
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package TAHHL-Herrnhuter-Losungen
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 ?>
 
-<!-- HHL Losungen Settings -->
+<!-- TAHHL Losungen Settings -->
 
   <h1>Herrnhuter Losungen (HHL)</h1>
   <h2>Beschreibung</h2>
@@ -24,9 +24,9 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
   </p>
   
   <form method="post" action="options.php"> 
-    <?php @settings_fields('hhl-group'); ?>
-    <?php @do_settings_fields('hhl-group'); ?>
-    <?php do_settings_sections('hhl_losungen'); ?>
+    <?php @settings_fields('tahhl-group'); ?>
+    <?php @do_settings_fields('tahhl-group'); ?>
+    <?php do_settings_sections('tahhl_losungen'); ?>
     <?php @submit_button(); ?>
   </form>
   

@@ -1,7 +1,7 @@
 <?php
 /**
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package TAHHL-Herrnhuter-Losungen
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
@@ -9,9 +9,9 @@
  */
 
  
-define ('HHL_DownloadError' , '<p class=\"hhl-warning\">Die Losungen sind derzeit nicht verf&uuml;gbar!</p>');
+define ('TAHHL_DownloadError' , '<p class=\"hhl-warning\">Die Losungen sind derzeit nicht verf&uuml;gbar!</p>');
 
-function hhl_is_utf8($string) 
+function tahhl_is_utf8($string) 
 {
   return preg_match('/(
     [\xC2-\xDF][\x80-\xBF]            # non-overlong 2-byte
@@ -27,7 +27,7 @@ function hhl_is_utf8($string)
 
 /* Get Losungen if CURL is not available.  */
 
-function hhl_get_withoutcurl ( $url ) 
+function tahhl_get_withoutcurl ( $url ) 
 {
 
   $page='';
@@ -52,7 +52,7 @@ function hhl_get_withoutcurl ( $url )
 
 /* Get list of events if CURL is available.  */
 
-function hhl_get_withcurl ( $url, $agent = 'WordpressPlugin' )
+function tahhl_get_withcurl ( $url, $agent = 'WordpressPlugin' )
 {
   // use curl
   $sobl = curl_init($url);
@@ -76,7 +76,7 @@ function hhl_get_withcurl ( $url, $agent = 'WordpressPlugin' )
   else 
   {
     # Fehlermeldung:
-    $returned = HHL_DownloadError;
+    $returned = TAHHL_DownloadError;
   }
   return $returned;
 
@@ -88,7 +88,7 @@ function hhl_get_withcurl ( $url, $agent = 'WordpressPlugin' )
 
  */
 
-function hhl_converttoxmldate ( $datestr ) 
+function tahhl_converttoxmldate ( $datestr ) 
 {
   date_default_timezone_set('UTC');
   if ($datestr != '') 
@@ -105,16 +105,16 @@ function hhl_converttoxmldate ( $datestr )
  ----------------------------------------------------------------
  */
 
-function hhl_getlosungen($download_url, $agent = 'WordPressPlugin' ) 
+function tahhl_getlosungen($download_url, $agent = 'WordPressPlugin' ) 
 
 {
 
   if ( $download_url != '' ) 
   {
     if (function_exists('curl_init'))
-      $returned = hhl_get_withcurl ($url );
+      $returned = tahhl_get_withcurl ($url );
     else 
-      $returned = hhl_get_withoutcurl($url);
+      $returned = tahhl_get_withoutcurl($url);
 
     return $returned ;
 

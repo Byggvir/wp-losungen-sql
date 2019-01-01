@@ -1,6 +1,6 @@
 <?php
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package TAHHL-Herrnhuter-Losungen
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once(sprintf("%s/lib.php", dirname(__FILE__)));
 
-function hhl_postprocess_xml ( $inxml , $codeplace = 'article' ) {
+function tahhl_postprocess_xml ( $inxml , $codeplace = 'article' ) {
 
   
   $xml = simplexml_load_string($inxml);

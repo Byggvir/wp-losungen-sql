@@ -6,7 +6,7 @@ Plugin URI: http://byggvir.de/wp-losungen-sql/
 Description: Dieses Plugin stellt eine Schnittstelle zu den Losungen der Herrnhuter Brüdergemeine bereit. Mit dem Shortcode hhl-losung kan eine Losung in Seiten und Artikel eingebunden werden. Daneben steht ein Widget für die Anzeige der Tages-, Jahres oder Wochenlosung zur Verfügung. Die Losungen werden in einer Tabelle der WordPress Datenbank gespeichert.
 
 Author: Thomas Arend
-Version: 2019.0
+Version: 2019.0.1
 Date: 30.12.2018
 Author URI: http://byggvir.de/
 License: GPL 3 or later
@@ -14,7 +14,7 @@ License: GPL 3 or later
 */
 
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package TAHHL-Herrnhuter-Losungen
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
@@ -29,9 +29,9 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
  * Define a prefix for HHL
  */
 
-define( "HHL", 'HHL_' );
+define( "TAHHL", 'TAHHL_' );
 
-if ( !class_exists( 'HHL_Losungen' ) )
+if ( !class_exists( TAHHL.'Losungen' ) )
  {
   class HHL_Losungen
    {
@@ -42,7 +42,7 @@ if ( !class_exists( 'HHL_Losungen' ) )
      {
       // Initialize Settings
       require_once( sprintf( "%s/includes/settings.php", dirname( __FILE__ ) ) );
-      $HHL_Losungen_Settings = new HHL_Losungen_Settings();
+      $TAHHL_Losungen_Settings = new TAHHL_Losungen_Settings();
       
      } // END public function __construct
     
@@ -62,44 +62,44 @@ if ( !class_exists( 'HHL_Losungen' ) )
       // Do nothing
      } // END public static function deactivate
     
-   } // END class HHL_Losungen
+   } // END class TAHHL.Losungen
   
- } // END if(!class_exists(HHL.'Losungen'))
+ } // END if(!class_exists(TAHHL.'Losungen'))
 
 
-if ( class_exists( 'HHL_Losungen' ) )
+if ( class_exists( TAHHL.'Losungen' ) )
  {
   
   // Installation and uninstallation hooks
   register_activation_hook( __FILE__, array(
-    'HHL_Losungen',
+    TAHHL.'Losungen',
     'activate' 
   ) );
   register_deactivation_hook( __FILE__, array(
-    'HHL_Losungen',
+    TAHHL.'Losungen',
     'deactivate' 
   ) );
   
   // Instantiate the plugin class
   
-  $hhl_losungen = new HHL_Losungen();
+  $tahhl_losungen = new TAHHL_Losungen();
   
   // Add a link to the settings page onto the plugin page
   
   if ( isset( $hhl_losungen ) )
    {
     // Add the settings link to the plugins page
-    function HHL_settings_link( $links )
+    function TAHHL_settings_link( $links )
      {
       
-      $settings_link = '<a href="options-general.php?page=hhl_losungen">Settings</a>';
+      $settings_link = '<a href="options-general.php?page=tahhl_losungen">Settings</a>';
       array_unshift( $links, $settings_link );
       return $links;
       
      }
     
     $plugin = plugin_basename( __FILE__ );
-    add_filter( "plugin_action_links_$plugin", HHL . 'settings_link' );
+    add_filter( "plugin_action_links_$plugin", TAHHL . 'settings_link' );
     
    } //isset( $hhl_losungen )
   
@@ -115,16 +115,18 @@ require_once( sprintf( "%s/includes/widget.php", dirname( __FILE__ ) ) );
 
 // We need some CSS to format the Losung 
 
-function add_hhl_stylesheet( )
+function tahhl_add_stylesheet( )
  {
-  wp_register_style( HHL . 'StyleSheets', plugins_url( 'css/styles.css', __FILE__ ) );
-  wp_enqueue_style( HHL . 'StyleSheets' );
+  wp_register_style( TAHHL . 'StyleSheets', plugins_url( 'css/styles.css', __FILE__ ) );
+  wp_enqueue_style( TAHHL . 'StyleSheets' );
  }
 
-// Add the HHLStyleSheets
+// Add the StyleSheets
 
-add_action( 'wp_print_styles', 'add_hhl_stylesheet' );
+add_action( 'wp_print_styles', 'tahhl_add_stylesheet' );
 
-add_shortcode( 'losung', 'hhl_losung' );
+// Add the Shortcode
+
+add_shortcode( 'losung', 'tahhl_losung' );
 
 ?>

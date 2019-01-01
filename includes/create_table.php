@@ -1,24 +1,24 @@
 <?php
 
 /**
- * @package HHL-Herrnhuter-Losungen
+ * @package TAHHL-Herrnhuter-Losungen
  * @version 2019.0
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @copyright 2019 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
  
-define ('hhl_db_tab', 'hhl_losungen');
-define ('hhl_db_version','2019.0');
+define ('tahhl_db_tab', 'tahhl_losungen');
+define ('tahhl_db_version','2019.0');
 
-global $hhl_db_version;
-$hhl_db_version = hhl_db_version;
+global $TAHHL_db_version;
+$TAHHL_db_version = tahhl_db_version;
 
-function hhl_install() {
+function tahhl_install() {
 	global $wpdb;
-	global $hhl_db_version;
+	global $TAHHL_db_version;
 
-	$table_name = $wpdb->prefix . hhl_db_tab;
+	$table_name = $wpdb->prefix . tahhl_db_tab;
 	
 	$charset_collate = $wpdb->get_charset_collate();
 
@@ -38,13 +38,13 @@ function hhl_install() {
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 
-	add_option( 'hhl_db_version', $hhl_db_version );
+	add_option( 'hhl_db_version', $TAHHL_db_version );
 }
 
-function hhl_install_data() {
+function tahhl_install_data() {
 	global $wpdb;
 	
-	$table_name = $wpdb->prefix . hht_db_tab;
+	$table_name = $wpdb->prefix . tahhl_db_tab;
 	
 	$wpdb->insert( 
 		$table_name, 
@@ -60,8 +60,8 @@ function hhl_install_data() {
 	);
 }
 
-register_activation_hook( __FILE__, 'hhl_install' );
-register_activation_hook( __FILE__, 'hhl_install_data' );
+register_activation_hook( __FILE__, TAHHL.'install' );
+register_activation_hook( __FILE__, TAHHL.'install_data' );
 
 ?>
 

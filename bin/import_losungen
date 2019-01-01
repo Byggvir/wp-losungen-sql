@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MYSQL="mysql --user=root --password=$1" # << Insert your mysql DB passowrd here.
+MYSQL="mysql --user=wordpress --password=$1" # << Insert your mysql DB passowrd here.
 
 echo "
-USE hhlosungen;
+USE wordpress;
 CREATE TABLE IF NOT EXISTS losungen (
   Datum datetime DEFAULT NULL,
   Wtag varchar(16) DEFAULT NULL,
@@ -37,7 +37,7 @@ iconv -f ISO-8859-15 "$ICSV" -t UTF-8 | tr -d '\r' | sed 's#\([0-9]\{2\}\)\.\([0
 chmod 0744 $OCSV
 
 echo "
-USE hhlosungen; 
+USE wordpress; 
 
 LOAD DATA INFILE '$OCSV' 
 INTO TABLE losungen
