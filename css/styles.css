@@ -12,10 +12,10 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 .tahhl-losung {
 
-  border : 0.1em solid #600000; 
+  border : 0.2em solid #600000; 
   border-radius: 1em;
   box-shadow: 0.2em 0.2em 0.1em #802020;
-  padding : 0.5em;
+  padding : 1.0em;
   
 }
 

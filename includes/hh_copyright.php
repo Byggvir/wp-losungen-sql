@@ -18,11 +18,19 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 * @return text Coppyriht der Herrnhuter Brüdergemeine
 */
 
-function HHL_Copyright() {
-echo "
-  <p class=\"tahhl-losung-copy\">
+function HH_Copyright() {
+return "
+  <p class=\"tahhl-losung-copyright\">
   <a href=\"http://www.herrnhuter.de\" target=\"_blank\" title=\"Evangelische Br&uuml;der-Unit&auml;t\">&copy; Evangelische Br&uuml;der-Unit&auml;t – Herrnhuter Br&uuml;dergemeine</a> <br>
   <a href=\"https://www.losungen.de\" target=\"_blank\" title=\"www.losungen.de\">Weitere Informationen finden Sie hier</a>
 ";
 }
+
+function TA_Copyright () {
+
+return "
+  <div class=\"tahhl-copyright\">&copy 2019 - Thomas Arend - WP Losungen SQL</div>  
+";
+}
+
 ?>
