@@ -7,19 +7,19 @@ Date: 01.01.2019
 Version 2019.0
 */
 
-tahhl-losung {
+.tahhl-losung {
     
   border : 1px solid black;   
 }
 
-tahhl_losungstext, tahhl_lehrtext {
+.tahhl_losungstext, .tahhl_lehrtext {
  
     color: green;
     text-align: right;
  
 }
 
-tahhl_losungsvers, tahhl_lehrtextvers {
+.tahhl_losungsvers, .tahhl_lehrtextvers {
  
     color: blue;
     text-align: right;
