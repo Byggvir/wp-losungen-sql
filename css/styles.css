@@ -19,7 +19,7 @@
 
 .tahhl-losung , .tahhl-losungOfTheDay {
 
-  font-size : 0.5em;
+  font-size : 0.3em;
   border : 0.2em solid #600000; 
   border-radius: 1em;
   box-shadow: 0.2em 0.2em 0.1em #802020;
@@ -29,7 +29,8 @@
 }
 
 .tahhl-losungstext, .tahhl-lehrtext {
- 
+
+    font-size : 0.3em;
     color: green;
     text-align: left;
  
