@@ -34,8 +34,8 @@ class TAHHL_Losung_APISQL {
 	 * @return formtierter text
 	 */
 	private function convertTextToHtml($text) {
-		$text = preg_replace('#/(.*?:)/#', '<span class="tahhl_einleitung">$1</span>', $text, 1);
-		$text = preg_replace('/#(.*?)#/', '<span class="tahhl_hervorhebung">$1</span>', $text);
+		$text = preg_replace('#/(.*?:)/#', '<span class="tahhl-einleitung">$1</span>', $text, 1);
+		$text = preg_replace('/#(.*?)#/', '<span class="tahhl-hervorhebung">$1</span>', $text);
 
 		return $text;
 	}
