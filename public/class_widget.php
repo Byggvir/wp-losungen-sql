@@ -4,8 +4,8 @@
  *
  * @package           WP Losungen SQL
  * @link              http://byggvir.de
- * @since             2019.0.1
- * @version 2019.0.1
+ * @since             2019.0.2
+ * @version 2019.0.2
  * @copyright 2019 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @author Thomas Arend <thomas@arend-rhb.de>
@@ -56,19 +56,18 @@ class TAHHL_Losungen_Widget extends WP_Widget {
 		foreach ( $instance as $key => $value) {
 			$wg_atts[$key] = trim(empty($instance[$key]) ? $TAHHL_DefValues[$key] : $instance[$key]);
 		}
-		$wg_atts['title'] = apply_filters('widget_title', $wg_atts['title']);
-		//if ($wg_atts['script'] == '' ) $wg_atts['script'] = 'xml.php';
-		// $termine=postprocess_xml(hhl_getlosungen($wg_atts,$TAHHL_LosungenSettingNames),'widget');
-
+		// * $wg_atts['title'] = apply_filters('widget_title', $wg_atts['title']);
+		
 		if ( $wg_atts['title'] )
 			echo $wg_atts['title'];
 
 		$API=new TAHHL_Losung_APISQL ();
 
 		echo "<div class=\"tahhl-widget-losung\">";
+		echo "<div class=\"tahhl-widget-inner\">";
 		echo $API->getLosungOfTheDay();
 		echo HH_Copyright();
-		echo "</div>";
+		echo "</div></div>";
 
 	}
 

@@ -7,8 +7,19 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
+.tahhl-widget-losung {
+   border: 1px solid #ccc;
+   background-color : #fff;
+}
+
+.tahhl-widget-inner {
+   margin: 0 5% 1em;
+}
+
+
 .tahhl-losung , .tahhl-losungOfTheDay {
 
+  font-size : 0.7em;
   border : 0.2em solid #600000; 
   border-radius: 1em;
   box-shadow: 0.2em 0.2em 0.1em #802020;
@@ -40,7 +51,7 @@
     color : red;
 }
 
-.tahh-table {
+.tahhl-table {
     
 }
 
