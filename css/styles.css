@@ -30,7 +30,7 @@
 
 .tahhl-losungstext, .tahhl-lehrtext {
 
-    font-size : 0.3em;
+    font-size : 0.6em;
     color: green;
     text-align: left;
  
@@ -38,6 +38,7 @@
 
 .tahhl-losungsvers, .tahhl-lehrtextvers {
  
+    font-size : 0.4em;
     color: blue;
     text-align: right;
  
