@@ -19,9 +19,9 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-require_once plugin_dir_path( __FILE__ ) . '/global.php';
-require_once plugin_dir_path( __FILE__ ) . '/class_losung.php';
-require_once plugin_dir_path( __FILE__ ) . '/copyright.php';
+require_once plugin_dir_path( __FILE__ ) . 'global.php';
+require_once plugin_dir_path( __FILE__ ) . 'class_losung.php';
+require_once plugin_dir_path( __FILE__ ) . 'copyright.php';
 
 class TAHHL_ShortCodes {
 

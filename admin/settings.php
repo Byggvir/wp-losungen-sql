@@ -9,7 +9,7 @@
  */
 
 
-//Security check!
+//Security check
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 if (!class_exists(TAHHL.'Losungen_Settings')) {
@@ -33,7 +33,7 @@ if (!class_exists(TAHHL.'Losungen_Settings')) {
 
 			// global.php must be included here! Don't ask me why!
 
-			require_once sprintf("%s/global.php", dirname(__FILE__));
+			require_once plugin_dir_path( __FILE__ ) . '../public/global.php';
 
 			global
 			$TAHHL_DefLabels,
