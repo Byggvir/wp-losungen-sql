@@ -99,7 +99,7 @@ if ( !class_exists( TAHHL.'Losungen' ) ) {
 		 */
 		public function __construct( ) {
 			// Initialize Settings
-			require_once sprintf( "%s/includes/settings.php", dirname( __FILE__ ) );
+			require_once plugin_dir_path( __FILE__ ) . 'admin/settings.php';
 			$TAHHL_Losungen_Settings = new TAHHL_Losungen_Settings();
 
 		} // END public function __construct
@@ -166,19 +166,12 @@ if ( class_exists( TAHHL.'Losungen' ) ) {
 
 } //class_exists( 'HHL_Losungen' )
 
-require_once plugin_dir_path( __FILE__ ) . 'includes/global.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/lib.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/create_table.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/class_shortcodes.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/class_widget.php';
-/*
-require_once( sprintf( "%s/includes/postprocess.php", dirname( __FILE__ ) ) );
-require_once( sprintf( "%s/includes/lib.php", dirname( __FILE__ ) ) );
-require_once( sprintf( "%s/includes/create_table.php", dirname( __FILE__ ) ) );
+require_once plugin_dir_path( __FILE__ ) . 'public/global.php';
+require_once plugin_dir_path( __FILE__ ) . 'public/lib.php';
+require_once plugin_dir_path( __FILE__ ) . 'public/create_table.php';
+require_once plugin_dir_path( __FILE__ ) . 'public/class_shortcodes.php';
+require_once plugin_dir_path( __FILE__ ) . 'public/class_widget.php';
 
-require_once( sprintf( "%s/includes/shortcodes.php", dirname( __FILE__ ) ) );
-require_once( sprintf( "%s/includes/class_widget.php", dirname( __FILE__ ) ) );
-*/
 
 // We need some CSS to format the Losung
 
