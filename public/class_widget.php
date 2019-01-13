@@ -58,12 +58,12 @@ class TAHHL_Losungen_Widget extends WP_Widget {
 		}
 		// * $wg_atts['title'] = apply_filters('widget_title', $wg_atts['title']);
 		
-		if ( $wg_atts['title'] )
-			echo $wg_atts['title'];
 
 		$API=new TAHHL_Losung_APISQL ();
 
 		echo "<div class=\"tahhl-widget-losung\">";
+		if ( $wg_atts['title'] )
+			echo '<h3>' . $wg_atts['title'] . '<h3>';
 		echo "<div class=\"tahhl-widget-inner\">";
 		echo $API->getLosungOfTheDay();
 		echo HH_Copyright();
