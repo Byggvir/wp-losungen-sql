@@ -5,7 +5,7 @@
  * @package           WP Losungen SQL
  * @link              http://byggvir.de
  * @since             2019.0.1
- * @version 2019.0.1
+ * @version 2019.0.4
  * @copyright 2019 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @author Thomas Arend <thomas@arend-rhb.de>
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
  * Formtiere Markup eines Verses
  *
  * @param NULL
- * @return text Coppyriht der Herrnhuter Brüdergemeine
+ * @return text Coppyright der Herrnhuter Brüdergemeine
  */
 function HH_Copyright() {
 	return "
@@ -35,12 +35,12 @@ function HH_Copyright() {
 
 /**
  *
- * @return unknown
+ * @return Copyright des Autors
  */
 function TA_Copyright() {
 
 	return "
-  <div class=\"tahhl-copyright\">&copy 2019 - Thomas Arend - WP Losungen SQL</div>
+  <div class=\"tahhl-copyright\">&copy 2019 - Thomas Arend - WP Losungen SQL 2019.0.4</div>
 ";
 }
 
