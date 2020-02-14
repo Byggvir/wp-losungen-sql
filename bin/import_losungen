@@ -4,18 +4,19 @@ MYSQL="mysql --user=wordpress --password=$1 wordpress" # << Insert your mysql DB
 
 echo "
 USE wordpress;
+DROP TABLE LOSUNGEN;
 CREATE TABLE IF NOT EXISTS losungen (
   Datum datetime DEFAULT NULL,
-  Wtag varchar(16) DEFAULT NULL,
-  Sonntag varchar(255) DEFAULT NULL,
-  Losungsvers varchar(64) DEFAULT NULL,
-  Losungstext varchar(2048) DEFAULT NULL,
-  Lehrtextvers varchar(64) DEFAULT NULL,
-  Lehrtext varchar(2048) DEFAULT NULL,
+  Wtag varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  Sonntag varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  Losungsvers varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  Losungstext varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  Lehrtextvers varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  Lehrtext varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (datum),
   KEY Losungsvers (Losungsvers),
   KEY Lehrtextvers (Lehrtextvers)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
 " | $MYSQL
 
 for YEAR in $(date +%Y --date="last year") $(date +%Y) $(date +%Y --date="next year")

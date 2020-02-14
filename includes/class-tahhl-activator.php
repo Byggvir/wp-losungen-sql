@@ -1,43 +1,48 @@
 <?php
-/**
- * includes/create_table.php
- *
- *
- * @package           WP Losungen SQL
- * @link              http://byggvir.de
- * @since             2019.0.1
- * @version 2019.0.1
- * @copyright 2019 Thomas Arend Rheinbach Germany
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @author Thomas Arend <thomas@arend-rhb.de>
- * @plugin-wordpress
- *
- */
 
 /**
- * Security check: Exit if script is called directly
+ * Fired during plugin activation
+ *
+ * @link       https://byggvir.de
+ * @since      1.0.0
+ *
+ * @package    Tahhl
+ * @subpackage Tahhl/includes
  */
 
-define('tahhl_db_tab', 'tahhl_losungen');
-define('tahhl_db_version', '2019.0');
-
-global $TAHHL_db_version;
-$TAHHL_db_version = tahhl_db_version;
-
+define('TAHHL_TABLE', $wpdb->prefix . 'tahhl_losungen');
+define('TAHHL_DB_VERSION', '2019.0.1');
 
 /**
+ * Fired during plugin activation.
  *
+ * This class defines all code necessary to run during the plugin's activation.
+ *
+ * @since      1.0.0
+ * @package    Tahhl
+ * @subpackage Tahhl/includes
+ * @author     Thomas Arend <thomas@arend-rhb.de>
  */
-function tahhl_install() {
+class Tahhl_Activator {
+
+	/**
+	 * Short Description. (use period)
+	 *
+	 * Long Description.
+	 *
+	 * @since    1.0.0
+	 */
+	public static function activate() {
+
 	global $wpdb;
 	global $TAHHL_db_version;
 
-	$table_name = $wpdb->prefix . tahhl_db_tab;
+	$table_name = TAHHL_TABLE ;
 
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE IF NOT EXISTS $table_name (
-        Datum datetime DEFAULT NULL,
+        Datum date DEFAULT NULL,
         Wtag varchar(16) DEFAULT NULL,
         Sonntag varchar(255) DEFAULT NULL,
         Losungsvers varchar(64) DEFAULT NULL,
@@ -52,18 +57,8 @@ function tahhl_install() {
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 
-	add_option( 'hhl_db_version', $TAHHL_db_version );
-}
-
-
-/**
- *
- */
-function tahhl_install_data() {
-	global $wpdb;
-
-	$table_name = $wpdb->prefix . tahhl_db_tab;
-
+	add_option( 'tahhl_db_version', $TAHHL_db_version );
+	
 	$wpdb->insert(
 		$table_name,
 		array(
@@ -76,10 +71,8 @@ function tahhl_install_data() {
 			'Lehrtext' => 'Dies ist das Buch der Geschichte Jesu Christi, des Sohnes Davids, des Sohnes Abrahams.'
 		)
 	);
+
+
+	}
+
 }
-
-
-register_activation_hook( __FILE__, TAHHL.'install' );
-register_activation_hook( __FILE__, TAHHL.'install_data' );
-
-?>

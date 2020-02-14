@@ -1,27 +1,39 @@
 <?php
+
 /**
- * index.php
+ * The plugin bootstrap file
  *
- * @link              http://byggvir.de
- * @since             2019.0.1
- * @package           WP Losungen SQL
- * @version 2019.0.2
- * @copyright 2019 Thomas Arend Rheinbach Germany
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @author Thomas Arend <thomas@arend-rhb.de>
- * @plugin-wordpress
+ * This file is read by WordPress to generate the plugin information in the plugin
+ * admin area. This file also includes all of the dependencies used by the plugin,
+ * registers the activation and deactivation functions, and defines a function
+ * that starts the plugin.
  *
+ * @link              https://byggvir.de
+ * @since             2019.0.0
+ * @package           Tahhl
+ *
+ * @wordpress-plugin
+ * Plugin Name:       Herrnhuter Losungen SQL
+ * Plugin URI:        https://github.com/Byggvir/wp-losungen-sql
+ * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Version:           2019.1.0
+ * Author:            Thomas Arend
+ * Author URI:        https://byggvir.de
+ * License:           GPL-3.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       tahhl
+ * Domain Path:       /languages
  * Plugin Name: Herrnhuter Losungen SQL
  * Plugin URI: http://byggvir.de/wp-losungen-sql/
  * Description: Dieses Plugin stellt die Losungen und Lehrtexte der Herrnhuter Brüdergemeine in Wordpress bereit.
  * Author: Thomas Arend
- * Version: 2019.0.2
+ * Version: 2019.1.0
  * Date: 02.01.2019
  * Author URI: http://byggvir.de/
  * License: GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  */
- 
+
 /**
 
 This program is free software; you can redistribute it and/or modify
@@ -79,115 +91,85 @@ This plugin requires WordPress >= 5.0.0 and was tested with PHP Interpreter >= 7
  *
  */
 
-/**
- * Security check: Exit if script is called directly
- */
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-
 /**
- * Define a prefix for WP Losungen SQL
+ * Currently plugin version.
+ * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Rename this for your plugin and update it as you release new versions.
  */
 
 define( "TAHHL", 'TAHHL_' );
 
-if ( !class_exists( TAHHL.'Losungen' ) ) {
-	class TAHHL_Losungen {
+define( 'TAHHL_VERSION'     , '2019.1.0' );
 
-		/**
-		 * Construct the plugin object
-		 */
-		public function __construct( ) {
-			// Initialize Settings
-			require_once plugin_dir_path( __FILE__ ) . 'admin/settings.php';
-			$TAHHL_Losungen_Settings = new TAHHL_Losungen_Settings();
+/**
+ * Path of the plugin
+ */
+ 
+define( 'TAHHL_PATH'   , plugin_dir_path( __FILE__ ));
 
-		} // END public function __construct
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-tahhl-activator.php
+ */
+function activate_tahhl() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-tahhl-activator.php';
+	Tahhl_Activator::activate();
+}
 
-		/**
-		 * Activate the plugin
-		 */
-		public static function activate( ) {
-			// Do nothing
-		} // END public static function activate
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-tahhl-deactivator.php
+ */
+function deactivate_tahhl() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-tahhl-deactivator.php';
+	Tahhl_Deactivator::deactivate();
+}
 
-		/**
-		 * Deactivate the plugin
-		 */
-		public static function deactivate( ) {
-			// Do nothing
-		} // END public static function deactivate
+register_activation_hook( __FILE__, 'activate_tahhl' );
+register_deactivation_hook( __FILE__, 'deactivate_tahhl' );
 
-	} // END class TAHHL.Losungen
+/**
+ * Add the settings link to the plugins page
+ *
+ * @param unknown $links
+ * @return unknown
+ */
+function TAHHL_settings_link( $links ) {
 
-} // END if(!class_exists(TAHHL.'Losungen'))
+	$settings_link = '<a href="options-general.php?page=tahhl_losungen">Settings</a>';
+	array_unshift( $links, $settings_link );
+	return $links;
 
+}
 
-if ( class_exists( TAHHL.'Losungen' ) ) {
+add_filter( "plugin_action_links_". plugin_basename( __FILE__ ), TAHHL . 'settings_link' );
 
-	// Installation and uninstallation hooks
-	register_activation_hook( __FILE__, array(
-			TAHHL.'Losungen',
-			'activate'
-		) );
-	register_deactivation_hook( __FILE__, array(
-			TAHHL.'Losungen',
-			'deactivate'
-		) );
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
 
-	// Instantiate the plugin class
-
-	$tahhl_losungen = new TAHHL_Losungen();
-
-	// Add a link to the settings page onto the plugin page
-
-	if ( isset( $tahhl_losungen ) ) {
-
-
-		/**
-		 * Add the settings link to the plugins page
-		 *
-		 * @param unknown $links
-		 * @return unknown
-		 */
-		function TAHHL_settings_link( $links ) {
-
-			$settings_link = '<a href="options-general.php?page=tahhl_losungen">Settings</a>';
-			array_unshift( $links, $settings_link );
-			return $links;
-
-		}
-
-
-		$plugin = plugin_basename( __FILE__ );
-		add_filter( "plugin_action_links_$plugin", TAHHL . 'settings_link' );
-
-	} //isset( $hhl_losungen )
-
-} //class_exists( 'HHL_Losungen' )
-
-require_once plugin_dir_path( __FILE__ ) . 'public/global.php';
-require_once plugin_dir_path( __FILE__ ) . 'public/lib.php';
-require_once plugin_dir_path( __FILE__ ) . 'public/create_table.php';
-require_once plugin_dir_path( __FILE__ ) . 'public/class_shortcodes.php';
-require_once plugin_dir_path( __FILE__ ) . 'public/class_widget.php';
-
-
-// We need some CSS to format the Losung
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-tahhl.php';
 
 
 /**
+ * Begins execution of the plugin.
  *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    2019.0.0
  */
-function tahhl_add_stylesheet( ) {
-	wp_register_style( TAHHL . 'StyleSheets', plugins_url( 'css/styles.css', __FILE__ ) );
-	wp_enqueue_style( TAHHL . 'StyleSheets' );
+function run_tahhl() {
+
+	$plugin = new Tahhl();
+	$plugin->run();
+
 }
-
-
-// Add the StyleSheets
-
-add_action( 'wp_print_styles', 'tahhl_add_stylesheet' );
-
-
-?>
+run_tahhl();

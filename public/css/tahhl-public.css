@@ -1,0 +1,93 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+@charset UTF-8;
+/**
+ * @package TAHHL-Herrnhuter-Losungen
+ * @version 2019.0
+ * @author Thomas Arend <thomas@arend-rhb.de>
+ * @copyright 2019 Thomas Arend Rheinbach Germany
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ */
+
+.tahhl-widget-losung {
+   border: 1px solid #ccc;
+   background-color : #fff;
+}
+
+.tahhl-widget-inner {
+   margin: 0 5% 1em;
+}
+
+
+.tahhl-losung , .tahhl-losungOfTheDay {
+
+  font-size : 0.3em;
+  border : 0.2em solid #600000; 
+  border-radius: 1em;
+  box-shadow: 0.2em 0.2em 0.1em #802020;
+  padding : 1.0em;
+  margin: 0.2em;
+  
+}
+
+.tahhl-losungstext, .tahhl-lehrtext {
+
+    font-size : 0.8em;
+    color: green;
+    text-align: left;
+    line-height: normal;
+ 
+}
+
+.tahhl-losungsvers, .tahhl-lehrtextvers {
+ 
+    font-size : 0.4em;
+    color: blue;
+    text-align: right;
+    line-height: normal;
+ 
+}
+
+.tahhl-einleitung, .tahhl-hervorhebung {
+    font-weight : bold;
+}
+
+.tahhl-losung-copyright {
+   font-size: 0.3em;
+   
+}
+
+.tahhl-header {
+    color : red;
+}
+
+.tahhl-table {
+    
+}
+
+.tahhl-tab-head,
+.tahhl-tab-head-datum ,
+.tahhl-tab-head-losung,
+.tahhl-tab-head-lehrtext {
+    text-align: center;
+    font-size : 1.5 em;
+}
+
+.tahhl-tab-cell {
+   vertical-align : top;
+  
+}
+
+.tahhl-tab-cell-losung,
+.tahhl-tab-cell-lehrtext {
+   vertical-align : top;
+    
+}
+
+.tahhl-tab-head-datum,
+.tahhl-tab-cell-datum {
+    width: 20%;
+    
+}
