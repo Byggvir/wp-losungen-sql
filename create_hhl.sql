@@ -12,6 +12,6 @@ CREATE TABLE IF NOT EXISTS `hhl_losungen` (
   PRIMARY KEY (`id`),
   KEY `Datum` (`Datum`),
   KEY `Losungsvers` (`Losungsvers`),
-  KEY `Lehrtextvers` (`Lehrtextvers`),
+  KEY `Lehrtextvers` (`Lehrtextvers`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 

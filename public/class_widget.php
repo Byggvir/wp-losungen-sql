@@ -63,11 +63,11 @@ class TAHHL_Losungen_Widget extends WP_Widget {
 
 		echo "<div class=\"tahhl-widget-losung\">";
 		if ( $wg_atts['title'] )
-			echo '<h3 class=\"tahhl-widget-title\">' . $wg_atts['title'] . '</h3>';
+			echo '<h3>' . $wg_atts['title'] . '<h3>';
 		echo "<div class=\"tahhl-widget-inner\">";
 		echo $API->getLosungOfTheDay();
 		echo HH_Copyright();
-		echo "</div>";
+		echo "</div></div>";
 
 	}
 

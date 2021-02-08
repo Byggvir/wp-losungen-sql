@@ -1,6 +1,6 @@
 <?php
 /**
- * class-wget.php
+ * class_wget.php
  *
  * @link    http://byggvir.de
  * @since   2019.0.1

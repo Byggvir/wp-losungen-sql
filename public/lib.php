@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 define('TAHHL_DownloadError' , '<p class=\"hhl-warning\">Die Losungen sind derzeit nicht verf&uuml;gbar!</p>');
 
-require_once plugin_dir_path( __FILE__ ) . 'lib/class-csvget.php';
+require_once plugin_dir_path( __FILE__ ) . '../lib/class_getcsv.php';
 
 /**
  * Convert date to 'Y-m-d' for XML-Script

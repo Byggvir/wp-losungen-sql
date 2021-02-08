@@ -168,7 +168,7 @@ if ( class_exists( TAHHL.'Losungen' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'public/global.php';
 require_once plugin_dir_path( __FILE__ ) . 'public/lib.php';
-require_once plugin_dir_path( __FILE__ ) . 'public/create_table.php';
+#require_once plugin_dir_path( __FILE__ ) . 'public/create_table.php';
 require_once plugin_dir_path( __FILE__ ) . 'public/class_shortcodes.php';
 require_once plugin_dir_path( __FILE__ ) . 'public/class_widget.php';
 

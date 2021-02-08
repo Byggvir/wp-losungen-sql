@@ -103,24 +103,24 @@ class Tahhl {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tahhl-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class_tahhl-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tahhl-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class_tahhl-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tahhl-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class_tahhl-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-tahhl-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class_tahhl-public.php';
 
 		$this->loader = new Tahhl_Loader();
 
