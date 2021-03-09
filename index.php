@@ -5,8 +5,8 @@
  * @link              http://byggvir.de
  * @since             2019.0.1
  * @package           WP Losungen SQL
- * @version 2019.0.2
- * @copyright 2019 Thomas Arend Rheinbach Germany
+ * @version 2021.0.1
+ * @copyright 2019-2021 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @plugin-wordpress
@@ -15,8 +15,8 @@
  * Plugin URI: http://byggvir.de/wp-losungen-sql/
  * Description: Dieses Plugin stellt die Losungen und Lehrtexte der Herrnhuter Brüdergemeine in Wordpress bereit.
  * Author: Thomas Arend
- * Version: 2019.0.2
- * Date: 02.01.2019
+ * Version: 2021.0.1
+ * Date: 27.02.2021
  * Author URI: http://byggvir.de/
  * License: GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -184,10 +184,13 @@ function tahhl_add_stylesheet( ) {
 	wp_enqueue_style( TAHHL . 'StyleSheets' );
 }
 
+function tahhl_script_load(){
+  wp_enqueue_script( 'tahhl-script', plugins_url( 'public/js/tahhl-public.js', __FILE__) , array( 'jquery' ));
+}
 
 // Add the StyleSheets
 
 add_action( 'wp_print_styles', 'tahhl_add_stylesheet' );
-
+add_action( 'wp_enqueue_scripts', 'tahhl_script_load' );
 
 ?>

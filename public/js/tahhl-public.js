@@ -30,3 +30,27 @@
 	 */
 
 })( jQuery );
+
+function tahhl_guess ( L ) {
+
+    var re = new RegExp(L,"g");
+ 
+    var x = document.getElementsByClassName('tahhl_L'+L);
+    var i;
+
+    spruch = spruch.replace(re,'');
+
+    for (i = 0; i < x.length; i++) {
+        x[i].style.visibility = "visible";
+    }
+    if (x.length > 0) {
+        document.getElementById('tahhl_L'+L).style.background = "green";
+    }
+    else {
+        document.getElementById('tahhl_L'+L).style.background = "red";
+    }
+    if (spruch == "") {
+        document.getElementById("tahhl_refresh").innerText = 'Gratuliere, das Rätsel ist gelöst! Neu?'; 
+    }
+    
+}

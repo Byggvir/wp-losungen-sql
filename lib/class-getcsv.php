@@ -1,4 +1,5 @@
 <?php
+
 /**
  * lib/class-wget.php
  *
@@ -68,7 +69,7 @@ class tahhl_getcsv {
 
 		}
 
-
+    }
 } // End class tahhl_getxml
 
 ?>

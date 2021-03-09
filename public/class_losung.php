@@ -5,8 +5,8 @@
  * @package           WP Losungen SQL
  * @link              http://byggvir.de
  * @since             2019.0.1
- * @version 2019.0.1
- * @copyright 2019 Thomas Arend Rheinbach Germany
+ * @version 2021.0.1
+ * @copyright 2019-2021 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @plugin-wordpress
@@ -99,6 +99,35 @@ class TAHHL_Losung_APISQL {
 		return wptexturize( $innerhtml ) ;
 	}
 
+	public function getLehrtext( $date = '' ) {
+
+		global $wpdb ;
+
+		$Lehrtext="";
+		
+		if ($date =='') {
+		    $wpdb->query("set @i:=0;");
+		    $wpdb->query("set @c:=(select count(*) from losungen where length(Lehrtext)<60);");
+		    $wpdb->query(" set @r:=floor(rand()*@c)+1;");
+            $SQL = "select Lehrtext from (select @i:=@i+1 as nr,Lehrtext from losungen where length(Lehrtext)<60) as L where nr = @r;" ;
+        }
+		else {
+            $SQL = "select Lehrtext from losungen where Datum = '$lday';";
+		}
+            
+
+		$lday = $this->convertDate ($date);
+
+		$LosungOfTheDay=$wpdb->get_results( $SQL, ARRAY_A);
+
+		if ( $LosungOfTheDay ) {
+			foreach ( $LosungOfTheDay as $row) {
+				$Lehrtext .= $row['Lehrtext'];
+			}
+		}
+
+		return ( $Lehrtext ) ;
+	}
 
 	/**
 	 *

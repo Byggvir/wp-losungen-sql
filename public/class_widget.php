@@ -4,9 +4,9 @@
  *
  * @package           WP Losungen SQL
  * @link              http://byggvir.de
- * @since             2019.0.2
+ * @since             2021.0.1
  * @version 2019.0.2
- * @copyright 2019 Thomas Arend Rheinbach Germany
+ * @copyright 2019-2021 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @author Thomas Arend <thomas@arend-rhb.de>
  * @plugin-wordpress
@@ -137,8 +137,10 @@ class TAHHL_Losungen_Widget extends WP_Widget {
 
 } // class TAHHL_Losungen_Widget
 
-// register TAHHL_Losungen_Widget
 
-add_action( 'widgets_init', create_function( '', 'register_widget("TAHHL_Losungen_Widget");' ) );
+// add_action( 'widgets_init', create_function( '', 'register_widget("TAHHL_Losungen_Widget");' ) );
+add_action( 'widgets_init', function() {
+    return register_widget("TAHHL_Losungen_Widget");
+});
 
 ?>
