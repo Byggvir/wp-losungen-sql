@@ -2,9 +2,14 @@
 
 MYSQL="mysql --user=wordpress --password=$1 wordpress" # << Insert your mysql DB passowrd here.
 
+red=`tput setaf 1`
+green=`tput setaf 2`
+blue=`tput setaf 4`
+reset=`tput sgr0`
+
 echo "
 USE wordpress;
-DROP TABLE LOSUNGEN;
+DROP TABLE IF EXISTS losungen;
 CREATE TABLE IF NOT EXISTS losungen (
   Datum datetime DEFAULT NULL,
   Wtag varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -13,7 +18,7 @@ CREATE TABLE IF NOT EXISTS losungen (
   Losungstext varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   Lehrtextvers varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   Lehrtext varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (datum),
+  PRIMARY KEY (Datum),
   KEY Losungsvers (Losungsvers),
   KEY Lehrtextvers (Lehrtextvers)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
@@ -21,10 +26,13 @@ CREATE TABLE IF NOT EXISTS losungen (
 
 for YEAR in $(date +%Y --date="last year") $(date +%Y) $(date +%Y --date="next year")
 do 
+echo -e "\n\n${blue}+---------"
+echo -e "| ${red}$YEAR"
+echo -e "${blue}+---------${reset}\n\n"
 
 URL="https://www.losungen.de/fileadmin/media-losungen/download/Losung_${YEAR}_CSV.zip"
 
-wget -O /tmp/${YEAR}.zip $URL && unzip  -o /tmp/${YEAR}.zip "*.csv" -d /tmp/
+# wget -O /tmp/${YEAR}.zip $URL && unzip  -o /tmp/${YEAR}.zip "*.csv" -d /tmp/
 
 if [ "$?" = "0" ]
 then

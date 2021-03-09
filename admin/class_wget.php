@@ -1,11 +1,10 @@
 <?php
-
 /**
- * lib/class-wget.php
+ * class_wget.php
  *
  * @link    http://byggvir.de
- * @since   2019.1.0
- * @version 2019.1.0
+ * @since   2019.0.1
+ * @version 2019.0.4
  * @copyright 2019 Thomas Arend Rheinbach Germany
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @plugin-wordpress
@@ -18,9 +17,13 @@
 /**
  * Security check: Exit if script is called directly
  */
-class tahhl_getcsv {
+ 
+class tahhl_wget {
 
-	public $retcode ;
+	public $lastget ;
+	public $error ;
+
+
 
 	/**
 	 * Construct the class
@@ -33,7 +36,7 @@ class tahhl_getcsv {
 
 
 	/**
-	 * Get the Body of a xml page
+	 * Get the Body of a page
 	 *
 	 * @param string  $url
 	 * @return string ( HTML )
@@ -58,18 +61,17 @@ class tahhl_getcsv {
 			'filename' => null
 		)  ;
 		
-		$response = wp_remote_get ( $url ) ;
+		$this->lastget = '';
+		
+		$response = wp_remote_get ( $url )  ;
 		if ( is_array( $response )  ) {
-			$this->retcode = wp_remote_retrieve_response_code( $response );
-			return $response['body'] ;
-			
-		} else {
-
-            return '' ;
-
+			$this->lastget = $response['body'] ;
 		}
 
-    }
-} // End class tahhl_getxml
+		return $this->lastget ;
+	}
+
+
+} // End class tahhl_wget
 
 ?>

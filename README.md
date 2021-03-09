@@ -51,7 +51,7 @@ Der Shortcode versteht die englischen Datumsangaben der Funktion ''date''.
 
 * Prüfen, ob Losungen verfügbar
 * Automatischer Update der Losungen
-* Löschen der veralten, nicht mehr zu verbreitenen Losungen des Vor-Vorjahres
+* Löschen der veralten, nicht mehr zu verbreitenden Losungen des Vor-Vorjahres
 * Fix des BibelServer.com links. Derzeit wird der Parameter bible des Widget ignoriert
 * Entfernen des Download Server im Wiget
 
