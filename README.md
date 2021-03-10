@@ -2,11 +2,18 @@
 
 Plugin um die Losungen der Herrenhuter Brüdergemeine in einer WordPress-Seite anzuzeigen.
 
-Das Plugin stellt ein Widget zur Anzeige in einer Seitenleiste und einen Shortcode zur Anzeige in einm Block zur Vefügung.
+Das Plugin stellt ein Widget zur Anzeige in einer Seitenleiste und einen *Shortcode* zur Anzeige in einem Block zur Verfügung.
 
 Die Einstellungen es Plugins lassen sich unter Einstellungen - Losungen anpassen.
 
-Die Losungen müssen als Tabelle losungen in der WordPress Datenbank der Seite vorliegen.
+Die Losungen müssen als Tabelle **losungen** in der WordPress Datenbank der Seite vorliegen.
+
+## Installieren der Losungen
+
+Im Verzeichnis */bin* befindet sich ein bash-Script *import_losungen* um die verfügbaren Losungen in die Datenbank zu importierern. Das Script sucht nach den Dateien des Vorjahres, des laufenden Jahres und des nächsten Jahres.
+Für den Import muss der mysql User - in der regel *wordpress* - das Privileg **FILE** haben und das Download Verzeichnis muss vom MySQL oder MariaDB Server erreichbar sein.
+
+Da nicht garantiert ist, dass das die Download-URL und das Format gültig bleibt, muss das Script ggf. angepasst werden. In den letzten Jahren hat sich auf der Herrnhuter Brüdergemeine die Schnittstelel allerdings nicht geändert.
 
 ## Widget
 
