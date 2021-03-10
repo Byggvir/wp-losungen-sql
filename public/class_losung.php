@@ -99,6 +99,35 @@ class TAHHL_Losung_APISQL {
 		return wptexturize( $innerhtml ) ;
 	}
 
+	public function getLehrtext( $date = '' ) {
+
+		global $wpdb ;
+
+		$Lehrtext="";
+		
+		if ($date =='') {
+		    $wpdb->query("set @i:=0;");
+		    $wpdb->query("set @c:=(select count(*) from losungen);");
+		    $wpdb->query(" set @r:=floor(rand()*@c)+1;");
+            $SQL = "select Lehrtext from (select @i:=@i+1 as nr ,Lehrtext from losungen) as L where nr = @r;" ;
+        }
+		else {
+            $SQL = "select Lehrtext from losungen where Datum = '$lday';";
+		}
+            
+
+		$lday = $this->convertDate ($date);
+
+		$LosungOfTheDay=$wpdb->get_results( $SQL, ARRAY_A);
+
+		if ( $LosungOfTheDay ) {
+			foreach ( $LosungOfTheDay as $row) {
+				$Lehrtext .= $row['Lehrtext'];
+			}
+		}
+
+		return ( $Lehrtext ) ;
+	}
 
 	/**
 	 *

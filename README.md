@@ -19,9 +19,9 @@ Da nicht garantiert ist, dass das die Download-URL und das Format gültig bleibt
 
 Das Wiget zeigt die aktuelle Losung in einer Seitenleiste an.
 
-## Shortcode
+## Shortcode losung
 
-Der Shortcode [losung] erlaubt die anzeige einzelner Losungen oder einer Tabelle mit Losungen in einer Seite / einem Artikel. 
+Der Shortcode [losung] erlaubt die Anzeige einzelner Losungen oder einer Tabelle mit Losungen in einer Seite / einem Artikel. 
 
 Verwendung: [losung {date=*datum*} {from=*datum*} {to=*datum*} max=*Anzahl*]
 
@@ -34,9 +34,25 @@ Ohne Angabe eines Datums wird die Losung des aktuellen Tages ausgegeben.
 
 Der Shortcode versteht die englischen Datumsangaben der Funktion ''date''.
 
+
 ### Beispiel
 
   [losung from="last week" to="next week - 1 day"]
+
+## Shortcode riddle
+
+Der Shortcode [riddle] stellte einen Lehrverstext als ein Hangman ähnliches Rätsel dar. Bei zufällig ausgewählten Lehrversen werden nur Lehrverstexte mit weniger als 60 Zeichen berücksichtigt.
+
+Verwendung: [losung {date=*datum*}]
+
+* date: gibt de Tag des Lehrtextes. Ohne Angabe eines Datums wird ein zufälliger Lehrverstext angezeigt.
+* 
+Der Shortcode versteht die englischen Datumsangaben der Funktion ''date''.
+
+
+### Beispiel
+
+  [riddle date="today"]
 
 ##ToDo: 
 

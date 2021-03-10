@@ -63,11 +63,11 @@ class TAHHL_Losungen_Widget extends WP_Widget {
 
 		echo "<div class=\"tahhl-widget-losung\">";
 		if ( $wg_atts['title'] )
-			echo '<h3>' . $wg_atts['title'] . '<h3>';
+			echo '<h3 class=\"tahhl-widget-title\">' . $wg_atts['title'] . '</h3>';
 		echo "<div class=\"tahhl-widget-inner\">";
 		echo $API->getLosungOfTheDay();
 		echo HH_Copyright();
-		echo "</div></div>";
+		echo "</div>";
 
 	}
 
@@ -137,8 +137,8 @@ class TAHHL_Losungen_Widget extends WP_Widget {
 
 } // class TAHHL_Losungen_Widget
 
-// register TAHHL_Losungen_Widget
+// register TAHHL_Losungen_Widget function () { return register_widget("evkj_Widget");}
 
-add_action( 'widgets_init', create_function( '', 'register_widget("TAHHL_Losungen_Widget");' ) );
+add_action ( 'widgets_init', function () { return register_widget("TAHHL_Losungen_Widget"); } );
 
 ?>
