@@ -1,54 +1,47 @@
-#!/bin/bash
+#!/bin/sh
 
-MYSQL="mysql --user=wordpress --password=$1 wordpress" # << Insert your mysql DB passowrd here.
-
-red=`tput setaf 1`
-green=`tput setaf 2`
-blue=`tput setaf 4`
-reset=`tput sgr0`
+MYSQL="mysql --user=wordpress --password=$1 --default-character-set=utf8 wordpress" # << Insert your mysql DB passowrd here.
 
 echo "
-USE wordpress;
-DROP TABLE IF EXISTS losungen;
 CREATE TABLE IF NOT EXISTS losungen (
   Datum datetime DEFAULT NULL,
-  Wtag varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  Sonntag varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  Losungsvers varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  Losungstext varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  Lehrtextvers varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  Lehrtext varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (Datum),
+  Wtag varchar(16) DEFAULT NULL,
+  Sonntag varchar(255) DEFAULT NULL,
+  Losungsvers varchar(64) DEFAULT NULL,
+  Losungstext varchar(2048) DEFAULT NULL,
+  Lehrtextvers varchar(64) DEFAULT NULL,
+  Lehrtext varchar(2048) DEFAULT NULL,
+  PRIMARY KEY (datum),
   KEY Losungsvers (Losungsvers),
   KEY Lehrtextvers (Lehrtextvers)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ;
 " | $MYSQL
 
 for YEAR in $(date +%Y --date="last year") $(date +%Y) $(date +%Y --date="next year")
 do 
-echo -e "\n\n${blue}+---------"
-echo -e "| ${red}$YEAR"
-echo -e "${blue}+---------${reset}\n\n"
 
 URL="https://www.losungen.de/fileadmin/media-losungen/download/Losung_${YEAR}_CSV.zip"
-
-# wget -O /tmp/${YEAR}.zip $URL && unzip  -o /tmp/${YEAR}.zip "*.csv" -d /tmp/
-
-if [ "$?" = "0" ]
-then
 ICSV="/tmp/Losungen Free ${YEAR}.csv"
-OCSV="$(mktemp).csv"
+OCSV="/tmp/${YEAR}.csv"
 
-iconv -f ISO-8859-15 "$ICSV" -t UTF-8 | tr -d '\r' | sed 's#\([0-9]\{2\}\)\.\([0-3][0-9]\)\.\([0-9]\{4\}\)#"\3-\2-\1"#' > $OCSV
+[ -e "/tmp/${YEAR}.zip" ] || ( wget -O /tmp/${YEAR}.zip $URL && unzip  -o /tmp/${YEAR}.zip "*.csv" -d /tmp/ )
+  
+if [ "$?" = "0" -a -e "$ICSV" ]
+then
+
+sed --in-place 's#\([0-9]\{2\}\)\.\([0-3][0-9]\)\.\([0-9]\{4\}\)#"\3-\2-\1"#' "$ICSV"
+iconv -f ISO-8859-15 "$ICSV" -t UTF-8 | tr -d '\r' > "$OCSV"
 
 # We must allow read access for MySQL / Marias DB
 
-chmod 0744 $OCSV
+chmod 0666 $OCSV 
+
+echo "Update Table Losungen $OCSV"
 
 echo "
 USE wordpress; 
 
-LOAD DATA INFILE '$OCSV' 
+LOAD DATA INFILE '$ICSV' 
 INTO TABLE losungen
 FIELDS TERMINATED BY '\t' 
 ENCLOSED BY '\"'
